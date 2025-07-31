@@ -1,3 +1,4 @@
+# repoA: .github/workflows/pr-validate.yml
 name: PR Validation
 
 on:
@@ -12,4 +13,9 @@ jobs:
     uses: chakratechgeek/centralspendshield/.github/workflows/pr-verification.yml@main
     secrets: inherit
 
-  
+  pr-verification-report:
+    name: PR Verification
+    needs: call-central-pr-verification
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "✅ PR validation complete"
